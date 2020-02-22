@@ -1,8 +1,47 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex>
-        <h1>Login</h1>
+  <v-container fluid fill-height>
+    <v-layout align-center justify-center>
+      <v-flex xs12 sm8 md6>
+        <v-card class="elevation-12">
+          <v-toolbar dark :color="mainColor">
+            <v-toolbar-title>Вход в систему</v-toolbar-title>
+          </v-toolbar>
+          <v-card-text>
+            <v-form v-model="valid" ref="form" validation>
+              <v-text-field
+                  prepend-icon="mdi-account"
+                  name="email"
+                  label="E-mail"
+                  type="email"
+                  :color="mainColor"
+                  v-model="email"
+                  aria-required="true"
+                  :rules="emailRules"
+              />
+              <v-text-field
+                  prepend-icon="mdi-lock"
+                  name="password"
+                  label="Пароль"
+                  type="password"
+                  :color="mainColor"
+                  v-model="password"
+                  counter=">6"
+                  aria-required="true"
+                  :rules="passwordRules"
+              />
+            </v-form>
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer/>
+            <v-btn
+                :color="mainColor"
+                :disabled="!valid"
+                v-bind:dark="valid"
+                large
+                @click="onSubmit"
+            >Войти</v-btn>
+          </v-card-actions>
+        </v-card>
       </v-flex>
     </v-layout>
   </v-container>
@@ -12,6 +51,23 @@
 export default {
   data () {
     return {
+      mainColor: 'red darken-4',
+      email: '',
+      password: '',
+      valid: false,
+      emailRules: [
+        v => !!v || 'Заполните E-mail!',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'E-mail должен быть валиден'
+      ],
+      passwordRules: [
+        v => !!v || 'Заполните пароль!',
+        v => (v && v.length >= 6) || 'Пароль должен быть длинной более 6-ти символов'
+      ]
+    }
+  },
+  methods: {
+    onSubmit () {
+      console.log('Success!')
     }
   }
 }
