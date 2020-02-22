@@ -24,9 +24,12 @@
           class="hidden-md-and-up"
       />
       <v-toolbar-title>
-        <big>☭</big> КОММУНИЗМ <big>☭</big></v-toolbar-title>
+        <router-link to="/" tag="span" class="pointer">
+          <big>☭</big> КОММУНИЗМ <big>☭</big>
+        </router-link>
+      </v-toolbar-title>
       <v-spacer/>
-      <v-toolbar-items class="hidden-sm-and-down" >
+      <v-toolbar-items class="hidden-sm-and-down">
         <v-btn
             :color="mainColor"
             elevation="0"
@@ -62,16 +65,19 @@ export default {
     drawer: false,
     mainColor: 'red darken-4',
     linkList: [
-      {title: 'Домой', icon: 'mdi-home', url: '/'},
-      {title: 'Авторизация', icon: 'mdi-login', url: '/login'},
-      {title: 'Регистрация', icon: 'mdi-target', url: '/registry'},
-      {title: 'Новости', icon: 'mdi-newspaper', url: '/news'},
-      {title: 'Добавить', icon: 'mdi-plus', url: '/append'},
-      {title: 'Мои', icon: 'mdi-account-outline', url: '/my-news'}
+      // {title: 'Домой', icon: 'mdi-home', url: '/'},
+      { title: 'Авторизация', icon: 'mdi-login', url: '/login' },
+      { title: 'Регистрация', icon: 'mdi-target', url: '/registry' },
+      { title: 'Новости', icon: 'mdi-newspaper', url: '/news' },
+      { title: 'Добавить', icon: 'mdi-plus', url: '/append' },
+      { title: 'Мои', icon: 'mdi-account-outline', url: '/my-news' }
     ]
   })
 }
 </script>
 
 <style scoped>
+  .pointer {
+    cursor: pointer;
+  }
 </style>
