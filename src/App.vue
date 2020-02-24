@@ -25,7 +25,8 @@
       />
       <v-toolbar-title>
         <router-link to="/" tag="span" class="pointer">
-          <big>☭</big> КОММУНИЗМ <big>☭</big>
+<!--          <big>☭</big> КОММУНИЗМ <big>☭</big>-->
+          NEWS
         </router-link>
       </v-toolbar-title>
       <v-spacer/>
@@ -51,7 +52,7 @@
       <v-container fluid>
         <v-row>
           <v-col cols="12">
-            <span class="white--text">Коммунизм топ: &copy; {{(new Date).getFullYear() }}</span>
+            <span class="white--text">News топ: &copy; {{(new Date).getFullYear() }}</span>
           </v-col>
         </v-row>
       </v-container>

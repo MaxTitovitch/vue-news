@@ -39,7 +39,7 @@ export default new Router({
     },
     {
       name: 'one-news',
-      path: '/one-news',
+      path: '/one-news/:id',
       component: OneNews
     },
     {
