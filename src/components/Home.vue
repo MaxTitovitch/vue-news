@@ -9,7 +9,7 @@
           cicle
       >
         <v-carousel-item
-            v-for="oneNews in news"
+            v-for="oneNews in promoNews"
             :key="oneNews.id"
             :src="oneNews.imageUrl"
             height="650px"
@@ -26,7 +26,8 @@
               </v-card-title>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn :color="mainColor" :to="'/one-news/' + oneNews.id">Подробнее</v-btn>
+                <v-btn :color="mainColor" :to="'/one-news/' +
+                oneNews.id">Подробнее</v-btn>
               </v-card-actions>
             </v-card>
           </div>
@@ -44,7 +45,7 @@
             style="flex-wrap: wrap"
         >
           <v-card height="100%">
-            <router-link :to="'/news-one/' + oneNews.id">
+            <router-link :to="'/one-news/' + oneNews.id">
               <v-img :src="oneNews.imageUrl" height="200px"/>
             </router-link>
             <v-card-title primary-title class="pb-12">
@@ -55,7 +56,7 @@
             </v-card-title>
             <v-card-actions class="news-actions">
               <v-spacer></v-spacer>
-              <v-btn flat :to="'/one-news/' + oneNews.id">Посмотреть</v-btn>
+              <v-btn :to="'/one-news/' + oneNews.id">Посмотреть</v-btn>
               <v-btn raised dark :color="mainColor">Отслеживать</v-btn>
             </v-card-actions>
           </v-card>
@@ -67,29 +68,15 @@
 
 <script>
 export default {
-  data () {
-    return {
-      mainColor: 'red darken-4',
-      news: [
-        {
-          id: 1,
-          title: 'Личности',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta facere numquam qui rem, voluptatibus.Lorem ipsum dolor sit amet, consectetur adipisicing elit. At dicta facere numquam qui rem, voluptatibus.',
-          imageUrl: 'https://pbs.twimg.com/profile_banners/1407774588/1565327194/1500x500'
-        },
-        {
-          id: 2,
-          title: 'История',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, repudiandae.',
-          imageUrl: 'https://pbs.twimg.com/profile_banners/702614673049460737/1459777068/1500x500'
-        },
-        {
-          id: 3,
-          title: 'Символика',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, quasi.',
-          imageUrl: 'https://pbs.twimg.com/profile_banners/88613966/1475134867/1500x500'
-        }
-      ]
+  computed: {
+    news () {
+      return this.$store.getters.allNews
+    },
+    promoNews () {
+      return this.$store.getters.promoNews
+    },
+    mainColor () {
+      return this.$store.getters.mainColor
     }
   }
 }

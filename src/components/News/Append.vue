@@ -74,7 +74,6 @@
 export default {
   data () {
     return {
-      mainColor: 'red darken-4',
       title: '',
       description: '',
       text: '',
@@ -100,7 +99,20 @@ export default {
   },
   methods: {
     onSubmit () {
-      console.log('Success!')
+      // if (this.$refs.form.valid) {
+      this.$store.dispatch('createOneNews', {
+        title: this.title,
+        description: this.description,
+        text: this.text,
+        imageUrl: 'https://materialdesignicons.com/favicon.png',
+        isToMain: this.isAppendToMain
+      })
+      // }
+    }
+  },
+  computed: {
+    mainColor () {
+      return this.$store.getters.mainColor
     }
   }
 }

@@ -62,18 +62,24 @@
 
 <script>
 export default {
-  data: () => ({
-    drawer: false,
-    mainColor: 'red darken-4',
-    linkList: [
-      // {title: 'Домой', icon: 'mdi-home', url: '/'},
-      { title: 'Авторизация', icon: 'mdi-login', url: '/login' },
-      { title: 'Регистрация', icon: 'mdi-target', url: '/registry' },
-      { title: 'Новости', icon: 'mdi-newspaper', url: '/news' },
-      { title: 'Добавить', icon: 'mdi-plus', url: '/append' },
-      { title: 'Мои', icon: 'mdi-account-outline', url: '/my-news' }
-    ]
-  })
+  data () {
+    return {
+      drawer: false,
+      linkList: [
+        // {title: 'Домой', icon: 'mdi-home', url: '/'},
+        { title: 'Авторизация', icon: 'mdi-login', url: '/login' },
+        { title: 'Регистрация', icon: 'mdi-target', url: '/registry' },
+        { title: 'Новости', icon: 'mdi-newspaper', url: '/news' },
+        { title: 'Добавить', icon: 'mdi-plus', url: '/append' },
+        { title: 'Мои', icon: 'mdi-account-outline', url: '/my-news' }
+      ]
+    }
+  },
+  computed: {
+    mainColor () {
+      return this.$store.getters.mainColor
+    }
+  }
 }
 </script>
 

@@ -40,6 +40,7 @@ export default new Router({
     {
       name: 'one-news',
       path: '/one-news/:id',
+      props: true,
       component: OneNews
     },
     {

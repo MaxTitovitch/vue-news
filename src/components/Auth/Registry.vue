@@ -38,6 +38,7 @@
                   v-model="confirmPassword"
                   aria-required="true"
                   :rules="confirmPasswordRules"
+
               />
             </v-form>
           </v-card-text>
@@ -49,7 +50,8 @@
                 v-bind:dark="valid"
                 large
                 @click="onSubmit"
-            >Регистрация</v-btn>
+            >Регистрация
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -61,7 +63,6 @@
 export default {
   data () {
     return {
-      mainColor: 'red darken-4',
       email: '',
       password: '',
       confirmPassword: '',
@@ -83,6 +84,11 @@ export default {
   methods: {
     onSubmit () {
       console.log('Success!')
+    }
+  },
+  computed: {
+    mainColor () {
+      return this.$store.getters.mainColor
     }
   }
 }
